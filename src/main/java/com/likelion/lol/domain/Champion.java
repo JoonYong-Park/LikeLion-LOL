@@ -15,8 +15,8 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Entity
+@Getter
 @NoArgsConstructor // 기본 생성자를 만들어주는 어노테이션
 public class Champion {
     @Id
@@ -36,4 +36,17 @@ public class Champion {
     @ManyToMany(mappedBy = "champions")
     private List<Player> players = new ArrayList<>();
 
+    // 스킨을 추가하는 메소드
+    public void addSkin(Skin skin) {
+        this.skins.add(skin);
+    }
+    // 플레이어를 추가하는 메소드
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
+    // 챔피언의 이름과 타입을 설정하는 생성자
+    public Champion(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
 }

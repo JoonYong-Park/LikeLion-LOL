@@ -31,4 +31,17 @@ public class Player {
             inverseJoinColumns = @JoinColumn(name = "champion_id"))
     private List<Champion> champions = new ArrayList<>();
 
+    // 플레이어가 챔피언을 추가하는 메소드
+    public void addChampion(Champion champion) {
+        this.champions.add(champion);
+
+        if(!champion.getPlayers().contains(this)) {
+            champion.addPlayer(this);
+        }
+    }
+
+    // 플레이어의 이름을 설정하는 생성자
+    public Player(String name) {
+        this.name = name;
+    }
 }
